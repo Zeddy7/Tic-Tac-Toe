@@ -199,12 +199,6 @@ const gameModule = (function () {
 
       const updateScreen = () => {
          game.updateScreen();
-         if (
-            game.getPlayers()[0].score === 0 &&
-            game.getPlayers()[1].score === 0
-         ) {
-            winnerDisplay.textContent = "New Game Started!";
-         }
       };
 
       function clickHandlerBoard(e) {
@@ -219,6 +213,7 @@ const gameModule = (function () {
 
       function restartGame() {
          game = gameController("Player X", "Player O");
+         winnerDisplay.textContent = "New Game Started!";
          updateScreen();
       }
       restartButton.addEventListener("click", restartGame);
