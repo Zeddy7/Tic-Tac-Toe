@@ -1,0 +1,118 @@
+@import url("https://fonts.googleapis.com/css2?family=Eater&display=swap");
+* {
+   margin: 0px;
+   padding: 0;
+   box-sizing: border-box;
+   font-family: "Eater";
+   color: rgb(255, 133, 133);
+   letter-spacing: 5px;
+}
+
+:root {
+   --body-color: rgb(80, 12, 12);
+   --header-color: rgb(69, 11, 11);
+}
+
+body {
+   height: 100vh;
+   position: relative;
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   background-color: rgb(103, 14, 14);
+}
+
+header {
+   width: 100%;
+   padding: 15px;
+   text-align: center;
+   font-size: 30px;
+   margin-bottom: 25px;
+   background-color: var(--header-color);
+}
+
+.tictac {
+   display: flex;
+   justify-content: space-between;
+   gap: 30px;
+}
+
+.container {
+   border-radius: 20px;
+   height: 550px;
+   width: 600px;
+   display: grid;
+   grid-template-columns: repeat(3, 1fr);
+   grid-template-rows: repeat(3, 1fr);
+}
+
+.container > button {
+   border-radius: 5px;
+   border: 1px solid rgb(76, 13, 13);
+   background-color: brown;
+   font-size: 50px;
+   cursor: pointer;
+   transition: transform 0.1s ease-in-out, translateY 0.1s ease-in-out,
+      background-color 0.1s ease-in-out;
+}
+
+.container > button:hover,
+.restart:hover {
+   background-color: rgb(212, 74, 74);
+}
+
+.container > button:active,
+.restart:active {
+   background-color: rgb(140, 40, 40);
+   transform: scale(0.92) translateY(0.2em);
+}
+
+.sec-container {
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   align-items: center;
+}
+
+.active-player {
+   margin: 20px;
+   padding: 10px;
+   border-radius: 10px;
+   text-align: center;
+   background-color: var(--header-color);
+}
+
+.score {
+   height: 250px;
+   width: 350px;
+   background-color: rgb(194, 194, 194);
+   border-radius: 10px;
+   padding: 15px;
+   display: flex;
+   flex-direction: column;
+   justify-content: space-around;
+   background-color: var(--header-color);
+}
+
+.winner {
+   font-size: 30px;
+   text-align: center;
+}
+
+.scores {
+   font-size: 20px;
+}
+
+.restart {
+   height: 70px;
+   width: 150px;
+   margin: 20px;
+   background-color: var(--header-color);
+   border: 1px solid rgb(69, 16, 16);
+   border-radius: 4px;
+   letter-spacing: 2px;
+}
+
+.restart:hover {
+   background-color: rgb(138, 12, 12);
+}
