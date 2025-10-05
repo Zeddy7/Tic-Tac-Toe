@@ -49,12 +49,12 @@ const gameModule = (function () {
          {
             name: playerOneName,
             token: "X",
-            score: initialScores[playerOneName],
+            score: initialScores[playerOneName] || 0,
          },
          {
             name: playerTwoName,
             token: "O",
-            score: initialScores[playerTwoName],
+            score: initialScores[playerTwoName] || 0,
          },
       ];
 
@@ -192,33 +192,43 @@ const gameModule = (function () {
    }
 
    function displayDom() {
-      let game = gameController("Player X", "Player O");
-      const winnerDisplay = document.querySelector(".winner");
-      const gameBoard = document.querySelector(".container");
+      let game;
+      const myDialog = document.getElementById("myDialog");
       const restartButton = document.querySelector(".restart");
+      const gameBoard = document.querySelector(".container");
+      const form = document.querySelector("form");
 
-      const updateScreen = () => {
+      myDialog.showModal();
+
+      function startGame(player1Name, player2Name) {
+         game = gameController(player1Name, player2Name);
          game.updateScreen();
-      };
+      }
 
       function clickHandlerBoard(e) {
          const selectedRow = e.target.dataset.row;
          const selectedColumn = e.target.dataset.column;
          if (!selectedRow || !selectedColumn) return;
-
          game.playRound(selectedRow, selectedColumn);
-         updateScreen();
+         game.updateScreen();
       }
       gameBoard.addEventListener("click", clickHandlerBoard);
 
-      function restartGame() {
-         game = gameController("Player X", "Player O");
-         winnerDisplay.textContent = "New Game Started!";
-         updateScreen();
-      }
-      restartButton.addEventListener("click", restartGame);
-      updateScreen();
+      form.addEventListener("submit", e => {
+         e.preventDefault();
+         const player1Name =
+            document.querySelector("#player1").value || "Player X";
+         const player2Name =
+            document.querySelector("#player2").value || "Player O";
+         startGame(player1Name, player2Name);
+         myDialog.close();
+         form.reset()
+      });
+
+      restartButton.addEventListener("click", () => {
+         myDialog.showModal();
+      });
    }
-   return { displayDom };
+
+   displayDom();
 })();
-gameModule.displayDom();
