@@ -62,7 +62,8 @@ header {
 }
 
 .container > button:active,
-.restart:active {
+.restart:active,
+.addPlayer:active {
    background-color: rgb(140, 40, 40);
    transform: scale(0.92) translateY(0.2em);
 }
